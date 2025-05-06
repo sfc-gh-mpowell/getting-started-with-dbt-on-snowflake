@@ -1,5 +1,5 @@
 USE ROLE accountadmin;
-USE WAREHOUSE tasty_bytes_dbt_wh;
+USE WAREHOUSE tasty_dev_wh;
 
 CREATE OR REPLACE DATABASE tb_101; -- source
 CREATE OR REPLACE SCHEMA tb_101.raw;
@@ -7,6 +7,15 @@ CREATE OR REPLACE SCHEMA tb_101.raw;
 
 CREATE OR REPLACE FILE FORMAT tb_101.public.csv_ff 
 type = 'csv';
+
+/*
+CREATE OR REPLACE STORAGE INTEGRATION TB_SAMPLEDATA
+    TYPE = EXTERNAL_STAGE
+    ENABLED = TRUE
+    STORAGE_ALLOWED_LOCATIONS = ('s3://sfquickstarts/frostbyte_tastybytes/')
+    STORAGE_PROVIDER = 'S3'
+    ;
+    */
 
 CREATE OR REPLACE STAGE tb_101.public.s3load
 COMMENT = 'Quickstarts S3 Stage Connection'
